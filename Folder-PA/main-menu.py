@@ -28,7 +28,8 @@ def main():
             break
 
         else:
-            print("❌ Pilihan tidak valid!\n")
+            print(" Pilihan tidak valid!\n")
+            print("coba ulangi lagi")
 
 
 if __name__ == '__main__':
