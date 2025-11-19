@@ -1,6 +1,6 @@
 import os
 import random
-import storage
+import penyimpanan
 import anime_crud
 import account_crud
 
@@ -80,7 +80,7 @@ def menu_user(user):
 
 
 def rekomendasi_hari_ini():
-    anime = random.sample(storage.data_anime, k=min(4, len(storage.data_anime))) if storage.data_anime else []
+    anime = random.sample(penyimpanan.data_anime, k=min(4, len(penyimpanan.data_anime))) if penyimpanan.data_anime else []
     print("\n🎯 Rekomendasi hari ini:")
     for a in anime:
         print(f"- {a['judul']}")
@@ -93,7 +93,7 @@ def tonton_anime(user_role):
     except ValueError:
         print("Input tidak valid.\n")
         return
-    anime = next((a for a in storage.data_anime if a["id"] == pilih), None)
+    anime = next((a for a in penyimpanan.data_anime if a["id"] == pilih), None)
     if not anime:
         print("Anime tidak ditemukan.\n")
         return

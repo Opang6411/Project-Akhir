@@ -1,5 +1,5 @@
 import auth
-import ui
+import tampilan
 
 
 def main():
@@ -16,9 +16,9 @@ def main():
             if not user:
                 continue
             if user.get("role") == "admin":
-                ui.menu_admin()
+                tampilan.menu_admin()
             else:
-                ui.menu_user(user)
+                tampilan.menu_user(user)
 
         elif pilihan == "2":
             auth.register()

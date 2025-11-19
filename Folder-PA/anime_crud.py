@@ -1,8 +1,8 @@
-import storage
+import penyimpanan
 
 
 def tampilkan_anime():
-    for a in storage.data_anime:
+    for a in penyimpanan.data_anime:
         print(f"{a['id']}. {a['judul']} ({a['genre']}) - Rating {a['rating']}")
         for i, ep in enumerate(a.get("episodes", []), start=1):
             print(f"   - Episode {i} - {ep['judul']} ({ep['akses']})")
@@ -17,14 +17,14 @@ def tambah_anime():
     except ValueError:
         print("Rating tidak valid. Gunakan angka.\n")
         return
-    storage.data_anime.append({
-        "id": len(storage.data_anime) + 1,
+    penyimpanan.data_anime.append({
+        "id": len(penyimpanan.data_anime) + 1,
         "judul": judul,
         "genre": genre,
         "rating": rating,
         "episodes": []
     })
-    storage.save_anime()
+    penyimpanan.save_anime()
     print(f"✅ Anime '{judul}' berhasil ditambahkan!\n")
 
 
@@ -35,7 +35,7 @@ def update_anime():
     except ValueError:
         print("Input tidak valid.\n")
         return
-    anime = next((a for a in storage.data_anime if a["id"] == pilih), None)
+    anime = next((a for a in penyimpanan.data_anime if a["id"] == pilih), None)
     if not anime:
         print("Anime tidak ditemukan.\n")
         return
@@ -48,7 +48,7 @@ def update_anime():
         judul_ep = input("Judul episode baru: ")
         akses = input("Akses episode (gratis/premium): ").lower()
         anime.setdefault("episodes", []).append({"judul": judul_ep, "akses": akses})
-        storage.save_anime()
+        penyimpanan.save_anime()
         print(f"✅ Episode '{judul_ep}' berhasil ditambahkan.\n")
 
     elif menu == "2":
@@ -61,7 +61,7 @@ def update_anime():
             return
         akses_baru = input("Akses baru (gratis/premium): ").lower()
         anime["episodes"][idx]["akses"] = akses_baru
-        storage.save_anime()
+        penyimpanan.save_anime()
         print("✅ Status akses diperbarui.\n")
 
 
@@ -72,10 +72,10 @@ def hapus_anime():
     except ValueError:
         print("Input tidak valid.\n")
         return
-    anime = next((a for a in storage.data_anime if a["id"] == pilih), None)
+    anime = next((a for a in penyimpanan.data_anime if a["id"] == pilih), None)
     if anime:
-        storage.data_anime.remove(anime)
-        storage.save_anime()
+        penyimpanan.data_anime.remove(anime)
+        penyimpanan.save_anime()
         print(f"✅ Anime '{anime['judul']}' telah dihapus!\n")
     else:
         print("Anime tidak ditemukan.\n")
