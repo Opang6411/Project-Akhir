@@ -14,7 +14,7 @@ def _load_json(path):
         return []
 
 
-# data dimuat sekali saat modul diimport
+#Kerja bagus
 data_anime = _load_json(ANIME_PATH)
 akun = _load_json(AKUN_PATH)
 
