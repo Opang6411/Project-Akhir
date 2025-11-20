@@ -32,3 +32,5 @@ def hapus_akun():
     penyimpanan.akun.remove(user)
     penyimpanan.save_akun()
     print(f"✅ Akun '{user.get('username')}' telah dihapus!\n")
+ 
+ #hallo, i'm not wibu
