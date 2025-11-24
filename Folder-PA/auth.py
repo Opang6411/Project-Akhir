@@ -1,8 +1,8 @@
 import penyimpanan
 
 def login():
-    username = input("Username: ")
-    password = input("Password: ")
+    username = input("Username: ").strip()
+    password = input("Password: ").strip()
     for a in penyimpanan.akun:
         if a.get("username") == username and a.get("password") == password:
             print(f"\nLogin berhasil! Selamat datang, {username} ({a.get('role')})\n")
@@ -12,11 +12,18 @@ def login():
     return None
 
 def register():
-    username = input("Username baru: ")
-    if any(a.get("username") == username for a in penyimpanan.akun):
-        print("Username sudah digunakan!\n")
-        return None
-    password = input("Password baru: ")
+    while True:
+        username = input("Username baru: ").strip()
+        if username == "":
+            print("Username tidak boleh kosong.\n")
+            continue
+        if any(a.get("username") == username for a in penyimpanan.akun):
+            print("Username sudah digunakan!\n")
+            continue
+        break
+
+    password = input("Password baru: ").strip()
+
     while True:
         langganan = input("Apakah ingin berlangganan Pro? (y/n): ").lower()
         if langganan == "y":
@@ -27,6 +34,7 @@ def register():
             break
         else:
             print("Input tidak valid. Masukkan 'y' atau 'n'.\n")
+
     penyimpanan.akun.append({
         "username": username,
         "password": password,

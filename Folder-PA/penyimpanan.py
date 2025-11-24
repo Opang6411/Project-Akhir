@@ -15,6 +15,17 @@ def _load_json(path):
 data_anime = _load_json(ANIME_PATH)
 akun = _load_json(AKUN_PATH)
 
+# Pastikan ada admin default
+if not any(a.get("role") == "admin" for a in akun):
+    akun.append({
+        "username": "admin",
+        "password": "admin",
+        "role": "admin",
+        "history": []
+    })
+    with open(AKUN_PATH, 'w', encoding='utf-8') as f:
+        json.dump(akun, f, indent=4, ensure_ascii=False)
+
 def save_anime():
     with open(ANIME_PATH, 'w', encoding='utf-8') as f:
         json.dump(data_anime, f, indent=4, ensure_ascii=False)
@@ -22,3 +33,8 @@ def save_anime():
 def save_akun():
     with open(AKUN_PATH, 'w', encoding='utf-8') as f:
         json.dump(akun, f, indent=4, ensure_ascii=False)
+
+def reindex_anime_ids():
+    for idx, anime in enumerate(data_anime, start=1):
+        anime["id"] = idx
+    save_anime()
