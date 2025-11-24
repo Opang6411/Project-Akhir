@@ -16,9 +16,11 @@ def register():
         username = input("Username baru: ").strip()
         if username == "":
             print("Username tidak boleh kosong.\n")
+            input("Tekan Enter untuk mencoba lagi...\n")
             continue
         if any(a.get("username") == username for a in penyimpanan.akun):
             print("Username sudah digunakan!\n")
+            input("Tekan Enter untuk mencoba lagi...\n")
             continue
         break
 
