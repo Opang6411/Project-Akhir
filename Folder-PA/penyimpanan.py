@@ -15,7 +15,6 @@ def _load_json(path):
 data_anime = _load_json(ANIME_PATH)
 akun = _load_json(AKUN_PATH)
 
-# Pastikan ada admin default
 if not any(a.get("role") == "admin" for a in akun):
     akun.append({
         "username": "admin",

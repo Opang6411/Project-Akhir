@@ -17,6 +17,10 @@
             {
                 "anime": "Lord of the Mysteries (Donghua Version)",
                 "episode": "Episode 1 - The Fool"
+            },
+            {
+                "anime": "Dragon's Disciple",
+                "episode": "Episode 5 - Dragon's Awakening"
             }
         ]
     },
@@ -35,11 +39,6 @@
         "username": "lily",
         "password": "089",
         "role": "user",
-        "history": [
-            {
-                "anime": "Dragon's Disciple",
-                "episode": "Barudak Dragon"
-            }
-        ]
+        "history": []
     }
 ]

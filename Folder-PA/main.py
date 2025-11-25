@@ -1,3 +1,4 @@
+from InquirerPy import inquirer
 import auth
 import tampilan
 
@@ -14,24 +15,28 @@ def proses_login():
 def main():
     while True:
         tampilan.clear()
-        print("=== X-LifTen Anime & Donghua Streaming ===")
-        print("1. Login")
-        print("2. Register")
-        print("3. Keluar")
+        print("=== X-LifTen Anime & Donghua Streaming ===\n")
 
-        pilihan = input("Masukkan pilihanmu : ").strip()
+        pilihan = inquirer.select(
+            message="Pilih menu:",
+            choices=[
+                {"name": "Login", "value": "login"},
+                {"name": "Register", "value": "register"},
+                {"name": "Keluar", "value": "exit"},
+            ],
+            default="login",
+        ).execute()
 
-        if pilihan == "1":
+        if pilihan == "login":
             proses_login()
-        elif pilihan == "2":
+
+        elif pilihan == "register":
             auth.register()
-        elif pilihan == "3":
-            print("Terima kasih telah menggunakan X-LifTen!")
+
+        elif pilihan == "exit":
+            print("\nTerima kasih telah menggunakan X-LifTen!")
             input("Tekan Enter untuk keluar...")
             break
-        else:
-            print("Pilihan tidak valid!\n")
-            input("Tekan Enter untuk mencoba lagi...")
 
 if __name__ == "__main__":
     main()
