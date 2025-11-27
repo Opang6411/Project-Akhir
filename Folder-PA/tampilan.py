@@ -5,8 +5,8 @@ import sys
 from InquirerPy import inquirer
 
 import penyimpanan
-import anime_crud # Dipanggil di tonton_anime dan menu admin
-import account_crud # Dipanggil di menu admin
+import anime_crud 
+import account_crud 
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -80,7 +80,6 @@ def menu_tampil_anime(data):
                 print(f"{a['id']}. {a['judul']} ({a['genre']}) - Rating {a['rating']}")
 
             choices = ["(N) Next", "(P) Prev", "(S) Search", "(Q) Kembali"]
-            # Menambahkan ID Anime yang ditampilkan sebagai pilihan cepat
             choices.extend([f"ID: {a['id']} ({a['judul']})" for a in page_items])
 
             pilih = inquirer.select(
