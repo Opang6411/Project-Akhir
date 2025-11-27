@@ -16,12 +16,11 @@ def pause(durasi_detik, pesan="Kembali ke menu..."):
         waktu_mulai = time.time()
         durasi_target = durasi_detik
         
-        print(f"\n{pesan}", end="", flush=True) 
+        print(f"\n{pesan}", end="") 
 
         interval = 0.5
         while (time.time() - waktu_mulai) < durasi_target:
             sys.stdout.write(" .")
-            sys.stdout.flush() 
             time.sleep(interval)
         
         print() 
